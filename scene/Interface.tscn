@@ -1,0 +1,172 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://script/Interface.gd" type="Script" id=1]
+[ext_resource path="res://Ressources/fonts/Commander Edge.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 35
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+font_data = ExtResource( 2 )
+
+[node name="Interface" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TimeContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="MonthLabel" type="Label" parent="TimeContainer/NinePatchRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 425.605
+margin_top = 14.8528
+margin_right = 497.605
+margin_bottom = 54.8528
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "JAN"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DayLabel" type="Label" parent="TimeContainer/NinePatchRect"]
+anchor_bottom = 0.16
+margin_left = 948.829
+margin_top = 10.8086
+margin_right = 1005.83
+margin_bottom = 48.0086
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+text = "01"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YearLabel" type="Label" parent="TimeContainer/NinePatchRect"]
+margin_left = 938.694
+margin_top = 93.9723
+margin_right = 1012.69
+margin_bottom = 128.972
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "2020"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TemperatureLabel" type="Label" parent="TimeContainer/NinePatchRect"]
+margin_left = 940.316
+margin_top = 136.418
+margin_right = 996.316
+margin_bottom = 161.418
+custom_fonts/font = SubResource( 4 )
+text = "00°C"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlowersLabel" type="Label" parent="TimeContainer/NinePatchRect"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -102.073
+margin_top = -207.601
+margin_right = -16.0725
+margin_bottom = -107.601
+custom_fonts/font = SubResource( 5 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RootsLabel" type="Label" parent="TimeContainer/NinePatchRect"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -84.3604
+margin_top = -251.011
+margin_right = -34.3604
+margin_bottom = -201.011
+custom_fonts/font = SubResource( 6 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FruitsLabel" type="Label" parent="TimeContainer/NinePatchRect"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -97.8713
+margin_top = -97.5674
+margin_right = -22.8713
+margin_bottom = -47.5674
+custom_fonts/font = SubResource( 7 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

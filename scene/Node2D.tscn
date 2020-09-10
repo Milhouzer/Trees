@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://img/floortile.png" type="Texture" id=1]
+[ext_resource path="res://Ressources/tree.tres" type="TileSet" id=2]
+[ext_resource path="res://script/TileMap.gd" type="Script" id=3]
+[ext_resource path="res://script/Camera2D.gd" type="Script" id=4]
+[ext_resource path="res://scene/Interface.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scene/Pause.tscn" type="PackedScene" id=6]
+[ext_resource path="res://img/water_floortile.png" type="Texture" id=7]
+
+[sub_resource type="TileSet" id=1]
+0/name = "floortile"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 263, 191 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 131.5, 95.5 )
+0/navigation_offset = Vector2( 131.5, 95.5 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "water_floortile"
+1/texture = ExtResource( 7 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 264, 192 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 132, 96 )
+1/navigation_offset = Vector2( 132, 96 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TreesMap" type="TileMap" parent="."]
+mode = 1
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 16 )
+centered_textures = true
+format = 1
+script = ExtResource( 3 )
+
+[node name="Flowers" type="Timer" parent="TreesMap"]
+autostart = true
+
+[node name="Grass" type="TileMap" parent="."]
+z_index = -1
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 256, 128 )
+format = 1
+tile_data = PoolIntArray( -393211, 0, 0, -393210, 0, 0, -327676, 0, 0, -327675, 0, 0, -327674, 0, 0, -327673, 0, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262138, 0, 0, -262137, 0, 0, -262136, 0, 0, -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 1, 0, -196601, 0, 0, -196600, 0, 0, -196599, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 1, 0, -131067, 0, 0, -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -131063, 0, 0, -131062, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, 0, 0, 0, 1, 0, 0, 2, 1, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 1, 0, 65547, 0, 0, 65548, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 1, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 1, 0, 196617, 0, 0, 196618, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 393222, 0, 0, 393223, 0, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, 1 )
+anchor_mode = 0
+current = true
+zoom = Vector2( 1.5, 1.5 )
+limit_left = -800
+limit_top = -500
+limit_right = 2000
+limit_bottom = 1100
+script = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Interface" parent="Camera2D/CanvasLayer" instance=ExtResource( 5 )]
+anchor_right = 1.502
+anchor_bottom = 1.46
+margin_top = -1.0
+margin_right = -514.048
+margin_bottom = -276.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Pause" parent="CanvasLayer" instance=ExtResource( 6 )]
+visible = false
+[connection signal="timeout" from="TreesMap/Flowers" to="TreesMap" method="_on_Flowers_timeout"]
